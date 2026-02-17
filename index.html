@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amanda Nails - Estúdio de unhas premium especializado em fibra de vidro e nail art.">
+    
+    <title>Amanda Nails - Estúdio Premium</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header id="header">
+        <nav class="glass-nav">
+            <div class="container nav-container">
+                <div class="logo">Amanda Nails</div>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#info">Técnicas</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li> 
+                    <li><a href="#precos">Investimento</a></li> 
+                    <li><a href="#agendamento" class="btn-cta">Agendar</a></li>
+                </ul>
+
+                <button id="theme-toggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-bg"></div> 
+        <div class="container hero-content">
+            
+            <div class="hero-text">
+                <h1>Sofisticação em <br><span>Cada Detalhe</span></h1>
+                <p>Descubra a arte de unhas perfeitas com a exclusividade que você merece.</p>
+                <a href="#agendamento" class="btn-primary">Agendar Horário</a>
+            </div>
+
+            <div class="hero-img">
+                <img src="img/amanda.png" alt="Amanda Nail Designer" class="amanda-photo">
+            </div>
+
+        </div>
+    </section>
+
+    <section id="info" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Nossas Técnicas</h2>
+            <div class="cards-grid">
+                <div class="glass-card">
+                    <h3>Fibra de Vidro</h3>
+                    <p>Naturalidade e resistência incomparáveis para o seu dia a dia.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Nail Art Premium</h3>
+                    <p>Designs exclusivos e personalizados para expressar sua identidade.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Spa dos Pés</h3>
+                    <p>Relaxamento completo e cuidado profundo para sua saúde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogo" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Nossa Arte</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 3rem;">Explore formatos e inspirações exclusivas</p>
+
+            <div class="shapes-container glass-card">
+                <div class="shape-item">
+                    <div class="shape-img-wrapper">
+                        <img src="img/stiletto.jfif" alt="Formato Stiletto">
+                    </div>
+                    <span>Stiletto</span>
+                </div>
+                <div class="shape-item">
+                    <div class="shape-img-wrapper">
+                        <img src="img/almond.jfif" alt="Formato Almond">
+                    </div>
+                    <span>Almond</span>
+                </div>
+                <div class="shape-item">
+                    <div class="shape-img-wrapper">
+                        <img src="img/coffin.png" alt="Formato Coffin">
+                    </div>
+                    <span>Coffin</span>
+                </div>
+                <div class="shape-item">
+                    <div class="shape-img-wrapper">
+                        <img src="img/square.jpg" alt="Formato Square">
+                    </div>
+                    <span>Square</span>
+                </div>
+            </div>
+
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="criativas">Criativas</button>
+                <button class="filter-btn" data-filter="minimalistas">Minimalistas</button>
+                <button class="filter-btn" data-filter="noivas">Noivas</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card" data-category="criativas">
+                    <img src="img/criativas1.png" alt="Unhas Criativas 1" loading="lazy">
+                    <div class="overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item glass-card" data-category="criativas">
+                    <img src="img/criativas2.jpg" alt="Unhas Criativas 2" loading="lazy">
+                    <div class="overlay"><i class="fas fa-plus"></i></div>
+                </div>
+
+                <div class="gallery-item glass-card" data-category="minimalistas">
+                    <img src="img/minimalista1.png" alt="Unhas Minimalistas 1" loading="lazy">
+                    <div class="overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item glass-card" data-category="minimalistas">
+                    <img src="img/minimalista2.png" alt="Unhas Minimalistas 2" loading="lazy">
+                    <div class="overlay"><i class="fas fa-plus"></i></div>
+                </div>
+
+                <div class="gallery-item glass-card" data-category="noivas">
+                    <img src="img/noiva1.png" alt="Unhas Noivas 1" loading="lazy">
+                    <div class="overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item glass-card" data-category="noivas">
+                    <img src="img/noiva2.avif" alt="Unhas Noivas 2" loading="lazy">
+                    <div class="overlay"><i class="fas fa-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precos" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Menu de Serviços</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem;">Invista em você e na sua autoestima</p>
+            
+            <div class="glass-card price-table-container">
+                <table class="services-table">
+                    <thead>
+                        <tr>
+                            <th>Procedimento</th>
+                            <th>Investimento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alongamento Fibra de Vidro <span class="badge">Popular</span></td>
+                            <td>R$ 220,00</td>
+                        </tr>
+                        <tr>
+                            <td>Manutenção (Fibra/Gel)</td>
+                            <td>R$ 150,00</td>
+                        </tr>
+                        <tr>
+                            <td>Banho de Gel Premium</td>
+                            <td>R$ 120,00</td>
+                        </tr>
+                        <tr>
+                            <td>Blindagem de Diamante</td>
+                            <td>R$ 90,00</td>
+                        </tr>
+                        <tr>
+                            <td>Nail Art Complexa (Encapsulada/Jóias)</td>
+                            <td>R$ 50,00</td>
+                        </tr>
+                        <tr>
+                            <td>Spa dos Pés e Mãos</td>
+                            <td>R$ 110,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <p><strong>Biossegurança Garantida:</strong> Utilizamos autoclave e materiais 100% esterilizados ou descartáveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agendamento" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Agende seu Momento</h2>
+            <div class="glass-card form-container">
+                <form id="booking-form">
+                    <div class="input-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" placeholder="Seu nome" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">WhatsApp</label>
+                        <input type="tel" id="phone" placeholder="(XX) 99999-9999" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="service">Serviço Desejado</label>
+                        <select id="service">
+                            <option value="fibra">Fibra de Vidro</option>
+                            <option value="manutencao">Manutenção</option>
+                            <option value="spa">Spa dos Pés</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Horário de Preferência</label>
+                        <div id="time-grid" class="time-grid">
+                        </div>
+                    </div>
+
+                    <div id="booking-confirmation" class="hidden" style="margin-top: 1rem; text-align: center;">
+                        <p style="margin-bottom: 1rem;">Horário selecionado: <strong id="selected-time">--:--</strong></p>
+                        <button type="submit" class="btn-primary">Confirmar Agendamento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">Amanda Nails</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 Amanda Nails. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
