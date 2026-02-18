@@ -1,13 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // === CONFIGURAÇÃO DO CLOUDINARY ===
-    const CLOUD_NAME = 'dadysjhqful'; 
-    const TAGS_MAP = {
-        'criativas': 'criativas',
-        'minimalistas': 'minimalistas',
-        'noivas': 'noivas'
-    };
-
     // --- 1. Lógica do Tema (Dark/Light Mode) ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
@@ -59,93 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. Carregar Galeria do Cloudinary ---
-    async function loadGallery() {
-        const galleryGrid = document.getElementById('gallery-grid');
-        const categories = Object.keys(TAGS_MAP);
-        let allImages = [];
-
-        try {
-            for (const category of categories) {
-                const url = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/${TAGS_MAP[category]}.json`;
-                
-                try {
-                    const response = await fetch(url);
-                    if (response.ok) {
-                        const data = await response.json();
-                        const resources = data.resources.map(img => ({ ...img, category }));
-                        allImages = [...allImages, ...resources];
-                    } else {
-                        console.warn(`Nenhuma imagem encontrada para a tag: ${category}`);
-                    }
-                } catch (err) {
-                    console.log(`Erro ao buscar tag ${category}:`, err);
-                }
-            }
-
-            galleryGrid.innerHTML = '';
-
-            if (allImages.length === 0) {
-                galleryGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Nenhuma imagem encontrada no momento.</p>';
-                return;
-            }
-
-            allImages.forEach(img => {
-                const imgSrc = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto,w_600/${img.public_id}.${img.format}`;
-                
-                const itemDiv = document.createElement('div');
-                itemDiv.classList.add('gallery-item', 'glass-card', 'animate');
-                itemDiv.setAttribute('data-category', img.category);
-                
-                itemDiv.innerHTML = `
-                    <img src="${imgSrc}" alt="Unha ${img.category}" loading="lazy">
-                    <div class="overlay"><i class="fas fa-plus"></i></div>
-                `;
-                
-                galleryGrid.appendChild(itemDiv);
-            });
-
-            initFilters();
-
-        } catch (error) {
-            console.error('Erro fatal na galeria:', error);
-            galleryGrid.innerHTML = '<p>Erro ao carregar galeria.</p>';
-        }
-    }
-
-    // --- 4. Lógica de Filtro ---
-    function initFilters() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                galleryItems.forEach(item => {
-                    const itemCategory = item.getAttribute('data-category');
-
-                    if (filterValue === 'all' || filterValue === itemCategory) {
-                        item.classList.remove('hide');
-                        item.classList.remove('animate');
-                        void item.offsetWidth;
-                        item.classList.add('animate');
-                    } else {
-                        item.classList.add('hide');
-                    }
-                });
-            });
-        });
-    }
-
-    // --- 5. Executa o carregamento ---
-    loadGallery();
-
-
-    // --- 6. Lógica de Agendamento e Envio (ATUALIZADO PARA EMAILJS) ---
+    // --- 3. Lógica de Agendamento e Envio (EmailJS) ---
     const timeGrid = document.getElementById('time-grid');
     const bookingConfirmation = document.getElementById('booking-confirmation');
     const selectedTimeDisplay = document.getElementById('selected-time');
@@ -214,9 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 horario: selectedTimeValue
             };
 
-            // !!! PREENCHA AQUI SEUS DADOS DO EMAILJS !!!
-            const serviceID = 'service_8h57c56';   // Ex: service_z3k9...
-            const templateID = 'template_zpokwji'; // Ex: template_x4y...
+            // !!! DADOS DO EMAILJS (Do seu arquivo original) !!!
+            const serviceID = 'service_8h57c56';   
+            const templateID = 'template_zpokwji'; 
 
             emailjs.send(serviceID, templateID, templateParams)
                 .then(() => {
@@ -245,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 7. Smooth Scroll ---
+    // --- 4. Smooth Scroll (Rolagem Suave) ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -261,5 +167,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    console.log("%c Amanda Nails - Sistema Conectado ", "background: #E7B8B1; color: #fff; padding: 5px; border-radius: 5px;");
+    console.log("%c Amanda Nails - Sistema Atualizado ", "background: #E7B8B1; color: #fff; padding: 5px; border-radius: 5px;");
 });
