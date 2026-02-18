@@ -722,3 +722,109 @@ footer { margin-top: 4rem; }
         display: none;
     }
 }
+.time-slot.ocupado {
+    background: #ccc !important;
+    color: #666 !important;
+    cursor: not-allowed;
+    border-color: #999;
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+/* Container das datas com rolagem horizontal */
+.date-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+    scrollbar-width: none; /* Esconde barra de rolagem no Firefox */
+    -ms-overflow-style: none; /* Esconde no IE/Edge */
+}
+
+.date-scroll-container::-webkit-scrollbar {
+    display: none; /* Esconde no Chrome/Safari */
+}
+
+/* O cartãozinho de cada dia */
+.date-card {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 10px 15px;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.date-card span {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.date-card strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+}
+
+/* Quando o dia é selecionado */
+.date-card.selected {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.date-card.selected strong,
+.date-card.selected span {
+    color: #fff;
+    opacity: 1;
+}
+
+/* Dark mode ajuste */
+[data-theme="dark"] .date-card.selected strong {
+    color: #1A1617;
+}
+.date-scroll-container {
+    display: flex;
+    overflow-x: auto; /* Permite rolar para o lado */
+    gap: 12px;
+    padding: 10px 5px;
+    width: 100%; /* Ocupa a largura total do formulário */
+    cursor: grab; /* Muda o cursor para uma 'mãozinha' no PC */
+    scroll-behavior: smooth;
+    
+    /* No PC, é melhor deixar a barra de rolagem visível ou fina para o usuário saber que dá para rolar */
+    scrollbar-width: thin; 
+    scrollbar-color: var(--accent-color) transparent;
+}
+
+/* Garante que os cards não 'esmaguem' no PC */
+.date-card {
+    flex-shrink: 0; /* IMPEDIR que o card diminua no PC */
+    width: 110px;   /* Largura fixa para ficar bonito */
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 15px 5px;
+    transition: all 0.3s ease;
+}
+/* =========================================
+   ESCONDER BARRA DE ROLAGEM SÓ NO CELULAR
+   ========================================= */
+
+/* Aplica essas regras apenas para telas menores que 768px (celulares e tablets pequenos) */
+@media (max-width: 768px) {
+    .date-scroll-container {
+        /* Esconde a barra de rolagem no Firefox */
+        scrollbar-width: none; 
+        /* Esconde no Internet Explorer e Edge antigo */
+        -ms-overflow-style: none; 
+    }
+
+    /* Esconde a barra de rolagem no Chrome, Safari e Edge novo */
+    .date-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+}

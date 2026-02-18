@@ -19,7 +19,7 @@
     <script type="text/javascript">
        (function(){
           emailjs.init({
-            publicKey: "1QZH3CYbudW1XwC5D", // <--- SE TIVER MUDADO, COLOQUE SUA KEY NOVA AQUI
+            publicKey: "1QZH3CYbudW1XwC5D", // <--- CONFIRA SE SUA PUBLIC KEY ESTÁ CERTA
           });
        })();
     </script>
@@ -237,9 +237,15 @@
                     </div>
 
                     <div class="input-group">
+                        <label>Selecione o Dia</label>
+                        <div id="date-scroll" class="date-scroll-container">
+                            </div>
+                    </div>
+
+                    <div class="input-group">
                         <label>Horário de Preferência</label>
                         <div id="time-grid" class="time-grid">
-                        </div>
+                            </div>
                     </div>
 
                     <div id="booking-confirmation" class="hidden" style="margin-top: 1rem; text-align: center;">
@@ -265,6 +271,30 @@
             <p class="copyright">&copy; 2026 Amanda Nails. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script type="module">
+      // Importa query e where, necessários para filtrar por data
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      // COLE AQUI OS SEUS DADOS DO FIREBASE (Vá na engrenagem -> Configurações do Projeto)
+      const firebaseConfig = {
+        apiKey: "AIzaSyBlsJiWRJ1GfKDyKu0AFVvUM4_3-4WuEes",
+        authDomain: "amanda-nails-11f7b.firebaseapp.com",
+        projectId: "amanda-nails-11f7b",
+        storageBucket: "amanda-nails-11f7b.appspot.com",
+        messagingSenderId: "SEU_SENDER_ID",
+        appId: "SEU_APP_ID"
+      };
+
+      // Inicializa Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // Exporta para o script.js usar (incluindo query e where agora!)
+      window.db = db;
+      window.firestoreTools = { collection, addDoc, getDocs, query, where };
+    </script>
 
     <script src="script.js"></script>
 </body>
