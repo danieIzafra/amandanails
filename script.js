@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const dadosAgendamento = {
                 nome: document.getElementById('name').value,
-    // Esta linha abaixo remove tudo que não for número antes de enviar para o email
+                // Limpeza do telefone para o link wa.me funcionar
                 telefone: document.getElementById('phone').value.replace(/\D/g, ''), 
                 servico: document.getElementById('service').value,
                 data: selectedDateValue,       
@@ -222,7 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                await emailjs.send('rk870vp', 'template_tnodhe4', dadosAgendamento);
+                // IDs ATUALIZADOS: service_91l5vat e rk870vp (da sua foto)
+                // Veja que trocamos 'rk870vp' por 'template_tnodhe4'
+                await emailjs.send('service_91l5vat', 'template_tnodhe4', dadosAgendamento);
+                
                 const { collection, addDoc } = window.firestoreTools;
                 await addDoc(collection(window.db, "agendamentos"), dadosAgendamento);
 
@@ -253,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const { collection, getDocs, query, orderBy } = window.firestoreTools;
             const db = window.db;
 
-            // Busca as fotos ordenando da mais recente para a mais antiga
             const q = query(collection(db, "galeria"), orderBy("data_upload", "desc"));
             const querySnapshot = await getDocs(q);
 
@@ -262,12 +264,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            galeriaContainer.innerHTML = ''; // Limpa a mensagem padrão
+            galeriaContainer.innerHTML = ''; 
 
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
-                
-                // Agora cria uma div que responde ao clique em vez de um link
                 const itemHTML = `
                     <div class="insta-item clickable-zoom">
                         <img src="${data.url}" alt="Nail Art Amanda Nails">
