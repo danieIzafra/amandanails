@@ -828,3 +828,24 @@ footer { margin-top: 4rem; }
         display: none;
     }
 }
+/* =========================================
+   EFEITO DE CLIQUE NA GALERIA
+========================================= */
+
+/* Garante que a imagem respeite as bordas arredondadas do container */
+.insta-item.clickable-zoom {
+    border-radius: 15px; /* Ajuste este valor se suas bordas forem diferentes */
+    overflow: hidden;
+    cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+    transition: transform 0.2s ease-in-out; /* Suaviza a animação */
+}
+
+/* O estado :active acontece enquanto o botão do mouse está pressionado */
+.insta-item.clickable-zoom:active {
+    transform: scale(1.05); /* Aumenta a imagem em 5% */
+}
+
+/* Opcional: Se quiser um efeito suave também ao passar o mouse (hover) */
+.insta-item.clickable-zoom:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Sombra mais forte */
+}

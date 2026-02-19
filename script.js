@@ -266,14 +266,11 @@ document.addEventListener('DOMContentLoaded', () => {
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
                 
-                // Reaproveita as classes CSS para o Instagram Grid
+                // Agora cria uma div que responde ao clique em vez de um link
                 const itemHTML = `
-                    <a href="${data.url}" target="_blank" class="insta-item">
+                    <div class="insta-item clickable-zoom">
                         <img src="${data.url}" alt="Nail Art Amanda Nails">
-                        <div class="insta-overlay">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                    </a>
+                    </div>
                 `;
                 galeriaContainer.innerHTML += itemHTML;
             });
@@ -287,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarDatas();     
     setTimeout(carregarAgendaDoDia, 500); 
     carregarTabelaPrecos(); 
-    carregarGaleria(); // Adicionado aqui para executar na abertura da página
+    carregarGaleria();
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
